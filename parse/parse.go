@@ -35,19 +35,15 @@ func AssetsParser(config config.Config, assets []*asset.Asset, assetsparser Pars
 
 }
 
-func ErrorsParser(config config.Config, error []*engine.Error, errorsparser Parser){
-
-}
-
 func AccountParser(config config.Config, accounts []*account.Account, accountparser Parser){
 
 }
 
-func OrderParser(config config.Config, ){
+func OrdersParser(config config.Config, orders []*engine.Order, orderparser Parser){
 
 }
 
-func OfferParser(config config.Config, ){
+func OfferParser(config config.Config, offers []*engine.Offer, offerparser Parser){
 
 }
 
@@ -58,6 +54,15 @@ func TradesParser(config config.Config, trades []*engine.Trade, tradesparser Par
 func LendsParser(config config.Config, lends []*engine.Lend, lendsparser Parser){
 
 }
+
+func ErrorsParser(config config.Config, error []*engine.Error, errorsparser Parser){
+
+}
+
+func SuccessParser(config config.Config, error []*engine.Error, errorsparser Parser){
+
+}
+
 
 /*
 Bithumb

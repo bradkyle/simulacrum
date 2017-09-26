@@ -27,6 +27,7 @@ type Config struct{
 	Margin				bool
 	BrokerMargin			bool
 	HideOrders			bool
+	Positions			bool
 
 	ImmediateOrCancel		bool
 	PostOnly			bool

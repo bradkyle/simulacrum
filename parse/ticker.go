@@ -1,6 +1,64 @@
 package parse
 
 
+type BitfinexTicker struct {
+	Mid       string `json:"mid"`
+	Bid       string `json:"bid"`
+	Ask       string `json:"ask"`
+	LastPrice string `json:"last_price"`
+	Low       string `json:"low"`
+	High      string `json:"high"`
+	Volume    string `json:"volume"`
+	Timestamp string `json:"timestamp"`
+}
+
+type HitBTC struct {
+	Last        string `json:"last"`
+	Bid         string `json:"bid"`
+	Ask         string `json:"ask"`
+	High        string `json:"high"`
+	Low         string `json:"low"`
+	Volume      string `json:"volume"`
+	Open        string `json:"open"`
+	VolumeQuote string `json:"volume_quote"`
+	Timestamp   int64  `json:"timestamp"`
+}
+
+type CoinoneTicker struct {
+	Volume    string `json:"volume"`
+	Last      string `json:"last"`
+	Timestamp string `json:"timestamp"`
+	High      string `json:"high"`
+	Result    string `json:"result"`
+	ErrorCode string `json:"errorCode"`
+	First     string `json:"first"`
+	Low       string `json:"low"`
+	Currency  string `json:"currency"`
+}
+
+type BitstampTicker struct {
+	High      string  `json:"high"`
+	Last      string  `json:"last"`
+	Timestamp string  `json:"timestamp"`
+	Bid       string  `json:"bid"`
+	Vwap      string  `json:"vwap"`
+	Volume    string  `json:"volume"`
+	Low       string  `json:"low"`
+	Ask       string  `json:"ask"`
+	Open      float64 `json:"open"`
+}
+
+type KorbitTicker struct {
+	Timestamp int64  `json:"timestamp"`
+	Last      string `json:"last"`
+	Bid       string `json:"bid"`
+	Ask       string `json:"ask"`
+	Low       string `json:"low"`
+	High      string `json:"high"`
+	Volume    string `json:"volume"`
+}
+
+
 type GeminiTicker struct {
 	Ask    string `json:"ask"`
 	Bid    string `json:"bid"`
@@ -27,41 +85,29 @@ type KrakenTicker struct {
 	Error  []interface{} `json:"error"`
 	Result struct {
 		BCHEUR struct {
-			A []string `json:"a"`
-			B []string `json:"b"`
-			C []string `json:"c"`
-			V []string `json:"v"`
-			P []string `json:"p"`
-			T []int    `json:"t"`
-			L []string `json:"l"`
-			H []string `json:"h"`
-			O string   `json:"o"`
+			A []string `json:"a"`	// ask array
+			B []string `json:"b"`	// bid array
+			C []string `json:"c"`	// last trade
+			V []string `json:"v"`	// volume array
+			P []string `json:"p"`	// volume weighted average
+			T []int    `json:"t"`	// number of trades
+			L []string `json:"l"`	// low array
+			H []string `json:"h"`	// high array
+			O string   `json:"o"`	// days opening price
 		} `json:"BCHEUR"`
 	} `json:"result"`
 }
 
-type BitfinexTicker struct {
-	Mid       string `json:"mid"`
-	Bid       string `json:"bid"`
-	Ask       string `json:"ask"`
-	LastPrice string `json:"last_price"`
-	Low       string `json:"low"`
-	High      string `json:"high"`
-	Volume    string `json:"volume"`
-	Timestamp string `json:"timestamp"`
+type BittrexTicker struct {
+	Success bool   `json:"success"`
+	Message string `json:"message"`
+	Result  struct {
+		Bid  float64 `json:"Bid"`
+		Ask  float64 `json:"Ask"`
+		Last float64 `json:"Last"`
+	} `json:"result"`
 }
 
-type HitBTC struct {
-	Last        string `json:"last"`
-	Bid         string `json:"bid"`
-	Ask         string `json:"ask"`
-	High        string `json:"high"`
-	Low         string `json:"low"`
-	Volume      string `json:"volume"`
-	Open        string `json:"open"`
-	VolumeQuote string `json:"volume_quote"`
-	Timestamp   int64  `json:"timestamp"`
-}
 
 type BithumbTicker struct {
 	Status string `json:"status"`
@@ -78,29 +124,7 @@ type BithumbTicker struct {
 	} `json:"data"`
 }
 
-type CoinoneTicker struct {
-	Volume    string `json:"volume"`
-	Last      string `json:"last"`
-	Timestamp string `json:"timestamp"`
-	High      string `json:"high"`
-	Result    string `json:"result"`
-	ErrorCode string `json:"errorCode"`
-	First     string `json:"first"`
-	Low       string `json:"low"`
-	Currency  string `json:"currency"`
-}
 
-type BitstampTicker struct {
-	High      string  `json:"high"`
-	Last      string  `json:"last"`
-	Timestamp string  `json:"timestamp"`
-	Bid       string  `json:"bid"`
-	Vwap      string  `json:"vwap"`
-	Volume    string  `json:"volume"`
-	Low       string  `json:"low"`
-	Ask       string  `json:"ask"`
-	Open      float64 `json:"open"`
-}
 
 type BitFlyerApi struct {
 	ProductCode     string  `json:"product_code"`
@@ -129,15 +153,6 @@ type OkCoinTicker struct {
 	} `json:"ticker"`
 }
 
-type KorbitTicker struct {
-	Timestamp int64  `json:"timestamp"`
-	Last      string `json:"last"`
-	Bid       string `json:"bid"`
-	Ask       string `json:"ask"`
-	Low       string `json:"low"`
-	High      string `json:"high"`
-	Volume    string `json:"volume"`
-}
 
 type LiquiTicker struct {
 	EthBtc struct {
@@ -182,3 +197,10 @@ type Btc38Ticker struct {
 	} `json:"ticker"`
 }
 
+type bitxSaticker struct {
+	Ask                 string `json:"ask"`
+	Timestamp           int64  `json:"timestamp"`
+	Bid                 string `json:"bid"`
+	Rolling24HourVolume string `json:"rolling_24_hour_volume"`
+	LastTrade           string `json:"last_trade"`
+}
