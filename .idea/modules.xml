@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../deeptrade/work/simex/.idea/simex.iml" filepath="$PROJECT_DIR$/../deeptrade/work/simex/.idea/simex.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/simulacrum.iml" filepath="$PROJECT_DIR$/.idea/simulacrum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../deeptrade/practice/simexch/stockmarket/.idea/stockmarket.iml" filepath="$PROJECT_DIR$/../deeptrade/practice/simexch/stockmarket/.idea/stockmarket.iml" />
     </modules>
   </component>
 </project>

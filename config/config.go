@@ -26,6 +26,8 @@ type Config struct{
 	TradeHistory     		bool
 	Margin				bool
 	BrokerMargin			bool
+	Pairs				bool
+	Assets				bool
 	HideOrders			bool
 	Positions			bool
 
@@ -34,6 +36,9 @@ type Config struct{
 	StopOrders			bool
 	TrailingStop			bool
 	ExpiringOrders			bool
+
+	MaxOrdersPerDay			int64
+	MaxOpenOrders			int64
 
 	MaxOrderSize			float64
 	MinimumOrderSize		float64

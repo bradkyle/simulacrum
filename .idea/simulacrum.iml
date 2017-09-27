@@ -5,5 +5,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="GOPATH &lt;simulacrum&gt;" level="project" />
+    <orderEntry type="module" module-name="simex" />
+    <orderEntry type="module" module-name="stockmarket" />
+    <orderEntry type="library" scope="PROVIDED" name="Go SDK" level="project" />
+    <orderEntry type="library" name="GOPATH &lt;simulacrum&gt;" level="project" />
   </component>
 </module>

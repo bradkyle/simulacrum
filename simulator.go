@@ -17,6 +17,54 @@ to the real world such as:
 	- Systematically creating agents
 	- .etc
 
+	Analytics combine simulated events with account performance .etc
 
+Endpoints:
+     Public:
+	- Ticker
+	- Pairs
+	- Pairs detailed
+	- Assets
+	- Trades
+	- Orderbook
+	- Fundingbook
+	- Lends
+	- 24 hour stats
+	- Historic Rates
+	- Time
+
+     Private:
+     	- Accounts
+     	- Account Fees
+     	- Balances
+     	- Fills
+     	- Position
+     	- Deposits
+
+     	- Withdrawals
+     	- Withdrawal History
+
+     	- Transfer
+     	- Transfer History
+
+     	- New Order
+     	- Cancel Order
+     	- Cancel All Orders
+     	- Cancel Session Orders
+     	- Active Orders
+     	- Order History
+     	- Order Status
+
+     	- New Offer
+     	- Cancel Offer
+     	- Offers
+     	- Active Credits
+     	- Funding trades
+     	- Active Funding used
+     	- Active funding not used
+
+     	- Positions
+
+How to emulate with different endpoints and changing endpoints?
 
 */

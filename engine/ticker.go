@@ -11,8 +11,10 @@ type Ticker struct {
 }
 
 type Tick struct{
-	Interval			int64
 	Id				int64
+	StringId			string
+
+	Interval			int64
 
 	Symbol				string
 	BaseSymbol			string
@@ -53,3 +55,4 @@ type Tick struct{
 	Date				date.Date
 	Timestamp			timestamp.Timestamp
 }
+
