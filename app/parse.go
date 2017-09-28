@@ -4,7 +4,10 @@ import (
 	"github.com/gorilla/schema"
 	"net/http"
 	"log"
+	"errors"
 )
+
+// Sets a parser for each request handler
 
 /*
 	X-GEMINI-APIKEY	Your Gemini API key
@@ -13,8 +16,10 @@ import (
 */
 
 // parameters required in every request
+// agent scope should be passed with every request for debugging purposes
 type ParseCore struct{
-
+	AgentScope	string
+	Response	interface{}
 }
 
 // parameters required in authenticated endpoints
@@ -25,7 +30,9 @@ type ParseAuth struct{
 //account
 type NewAccountParser struct{
 	ParseCore
-
+	Index		string
+	Name 		string
+	Balances	string
 }
 
 type GetAccountParser struct{
@@ -151,23 +158,43 @@ type GetDetailedPairParser struct{
 	Symbol		string		`json:"symbol",valid:"validDetailedPairSymbol"`			// REQUIRED: The symbol you want information about.
 }
 
+// Endpoint parsers with no input
+type GetAccountsParser 		struct{ParseCore}
+type GetBalancesParser 		struct{ParseCore}
+type GetBalanceParser 		struct{ParseCore}
+type GetWithdrawalsParser 	struct{ParseCore}
+type GetBalancesParser 		struct{ParseCore}
+type GetTransferalsParser 	struct{ParseCore}
+type GetBalancesParser 		struct{ParseCore}
+type GetTradeHistoriesParser	struct{ParseCore}
+type GetFundingbookParser 	struct{ParseCore}
+type GetLendsParser 		struct{ParseCore}
+type GetOrderbooksParser 	struct{ParseCore}
+type GetStatsParser 		struct{ParseCore}
+type GetTickersParser 		struct{ParseCore}
+type GetAssetsParser 		struct{ParseCore}
+type GetPairsParser 		struct{ParseCore}
+type GetDetailedPairsParser 	struct{ParseCore}
+type CancelAllOrdersParser 	struct{ParseCore}
+type GetOrdersParser 		struct{ParseCore}
+type GetOffersParser 		struct{ParseCore}
+type CancelAllOffersParser 	struct{ParseCore}
 
-type Parser interface{
-	Parse(w http.ResponseWriter, r *http.Request)
-	Validate(w http.ResponseWriter, r *http.Request)
-}
 
 func (a *App) Parse(p *ParseCore, w http.ResponseWriter, r *http.Request) *ParseCore{
+
+	p.AgentScope = r.Header
+
 	r.ParseForm()
 	decoder := schema.NewDecoder()
 	err := decoder.Decode(p, r.Form)
 	if err != nil {
-		a.Respond(w,p,err)
+		a.Respond(w,errors.New("")) //todo replace with custom error struct and responder
 		return &ParseCore{}
 	}
 	result, err := p.Validate()
 	if err != nil {
-		a.Respond(w,p,err)
+		a.Respond(w,errors.New("")) //todo replace with custom error struct and responder
 		return &ParseCore{}
 	}
 	return result

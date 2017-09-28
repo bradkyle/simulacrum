@@ -8,25 +8,33 @@ import (
 	"net/http"
 )
 
+type AppEnv int
+const(
+	Development AppEnv = iota
+	Testing
+	Production
+)
+
 type App struct{
 	Router				*mux.Router	
 	Config				*Config
 	ConfigFile			string
 	shutdown 			chan bool
 	Accounts			map[string]*account.Account
-	Engine				engine.Engine
+	orderEngine			engine.OrderEngine
+	Env				AppEnv
 }
 
 func (app *App)Init() {
 
-	app.loadConfig()
-	app.setResponders()
-	app.setValidators()
-
 	app.Accounts = make(map[string]*account.Account)
-
+	app.loadConfig()
 
 	app.Router = mux.NewRouter().StrictSlash(true)
+	app.setValidators()
+	app.setResponders()
+
+	//todo refactor
 	app.Router.HandleFunc("/account/new", app.NewAccountHandler).Methods("POST")
 	app.Router.HandleFunc("/{exchange}/order/new", app.CreateOrderHandler).Methods("POST")
 	app.Router.HandleFunc("/{exchange}/order/cancel", app.CancelOrderHandler).Methods("POST")
@@ -37,7 +45,7 @@ func (app *App)Init() {
 	app.Router.HandleFunc("/{exchange}/transfer", app.TransferHandler).Methods("POST")
 	app.Router.HandleFunc("/{exchange}/orderbook", app.OrderbookHandler).Methods("GET")
 	app.Router.HandleFunc("/{exchange}/ticker", app.TickerHandler).Methods("GET")
-	app.Router.HandleFunc("/{exchange}/trades", app.TradesHandler).Methods("GET")
+	app.Router.HandleFunc("/{exchange}/trades", app.TradeHistoriesHandler).Methods("GET")
 	app.Router.HandleFunc("/{exchange}/assets", app.AssetsHandler).Methods("GET")
 	app.Router.HandleFunc("/{exchange}/pairs", app.AssetsHandler).Methods("GET")
 	app.Router.HandleFunc("/bank/account", app.BankHandler).Methods("POST")

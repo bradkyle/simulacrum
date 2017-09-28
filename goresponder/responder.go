@@ -2,19 +2,27 @@ package goresponder
 
 import (
 	"reflect"
-	"fmt"
 	"net/http"
 	"log"
 	"errors"
+	"fmt"
+	"encoding/json"
 )
 
 var (
 	responseFormat 	bool
 	responseWriter  interface{}
+	logLevel	logLevel
 )
 
 
-func SetResponseFormat(value string) {
+type logLevel int
+const(
+	Verbose	logLevel = iota
+
+)
+
+func SetDefaultResponseFormat(value string) {
 	if value == "json" || "csv" || "xml" || "protobuf" || "bson"{
 		responseFormat = value
 	} else{
@@ -22,7 +30,23 @@ func SetResponseFormat(value string) {
 	}
 }
 
+func SetDefaultResponder(value string) {
+
+}
+
+func SetLogLevel(level logLevel) {
+
+}
+
+//todo set closer will enforce common functionality for deleting data after a responder has been called
+func SetCloser(){
+	print("hello")
+}
+
 //todo 	goresponder.SetResponseWriter()
+func SetResponseWriter(w interface{}){
+	print("hello")
+}
 
 func RespondError(err error, w http.ResponseWriter){
 	log.Println(err)
@@ -42,10 +66,6 @@ func Respond(s interface{}, w http.ResponseWriter) error{
 	if val.Kind() == reflect.Interface || val.Kind() == reflect.Ptr {
 		val = val.Elem()
 	}
-	// we only accept structs
-	//if val.Kind() != reflect.Struct {
-	//	return fmt.Errorf("function only accepts structs; got %s", val.Kind())
-	//}
 
 	if valueField.Kind() == reflect.Struct && typeField.Tag.Get(tagName) != "-" {
 		var err error
@@ -93,4 +113,22 @@ func Respond(s interface{}, w http.ResponseWriter) error{
 		err = errs
 	}
 	return result, err
+}
+
+func DefaultResponder(input struct{}, w http.ResponseWriter){
+	if logLevel == Verbose{
+		log.Println("Using default responder...")
+	}
+
+	if responseFormat == "json"{
+		b, err := json.Marshal(input)
+		if err != nil {
+			panic(err)
+			return
+		}
+		w.WriteHeader(http.StatusOK)
+		w.Write(b)
+	}
+
+	return
 }

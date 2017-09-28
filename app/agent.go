@@ -9,16 +9,6 @@ type Agent struct{
 	Scope 		string
 }
 
-func (a App) NewAccount(parser NewAccountParser) (*account.Account, error){
-
-	return &account.Account{}, nil
-}
-
-func (a *App) auth(r *http.Request) *account.Account{
-
-	return
-}
-
 func (a *App) spot(r *http.Request){
 
 }
