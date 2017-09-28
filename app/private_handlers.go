@@ -13,11 +13,28 @@ func (a *App) CreateOrderHandler(w http.ResponseWriter, r *http.Request) {
 	write(w,response,err)
 }
 
+// Result of /order/status for the cancelled order.
 func (a *App) CancelOrderHandler(w http.ResponseWriter, r *http.Request) {
 	account := a.auth(r)
 	parser := new(CancelOrderParser)
 	parser.Parse(w,r)
 	response, err:= a.Engine.CancelOrder(account, parser)
+	write(w,response,err)
+}
+
+// Result of /order/status for the cancelled order.
+func (a *App) CancelMultipleOrdersHandler(w http.ResponseWriter, r *http.Request) {
+	account := a.auth(r)
+	parser := new(CancelMultipleOrdersParser)
+	parser.Parse(w,r)
+	response, err:= a.Engine.CancelMultipleOrders(account, parser)
+	write(w,response,err)
+}
+
+// Result of /order/status for the cancelled order.
+func (a *App) CancelAllOrdersHandler(w http.ResponseWriter, r *http.Request) {
+	account := a.auth(r)
+	response, err:= a.Engine.CancelAllOrders(account)
 	write(w,response,err)
 }
 

@@ -10,6 +10,15 @@ func (a *Account) GetAccounts() (){
 
 }
 
+func (a *Account) GetBalances() (){
+
+}
+
+func (a *Account) GetBalance() (){
+
+}
+
+
 func (a *Account) GetWithdrawals() (){
 
 }
@@ -22,6 +31,6 @@ func (a *Account) GetTransferals() (){
 
 }
 
-func (a *Account) Transfer(parser app.GetWithdrawalParser) (){
+func (a *Account) Transfer(parser app.TransferParser) (){
 
 }

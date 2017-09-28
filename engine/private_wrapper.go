@@ -6,6 +6,7 @@ import (
 )
 
 // Orders
+// return order_id [int64] An order object containing the order’s ID as well as all the information provided by /order/status
 func (e *OrderEngine) NewOrder(account acc.Account, parser app.NewOrderParser) (){
 	locker := e.getLocker(parser.Symbol)
 	err := locker.Lock()
@@ -27,7 +28,18 @@ func (e *OrderEngine) NewOrder(account acc.Account, parser app.NewOrderParser) (
 	return nil
 }
 
+// return Result of /order/status for the cancelled order.
 func (e *OrderEngine) CancelOrder(account acc.Account, parser app.CancelOrderParser) (){
+
+}
+
+// return {"result":"Orders cancelled"}
+func (e *OrderEngine) CancelMultipleOrders(account acc.Account, parser app.CancelOrderParser) (){
+
+}
+
+// return {"result":"All orders cancelled"}
+func (e *OrderEngine) CancelAllOrders(account acc.Account, parser app.CancelOrderParser) (){
 
 }
 

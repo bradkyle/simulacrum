@@ -16,6 +16,20 @@ func (a *App) AccountsHandler(w http.ResponseWriter, r *http.Request) {
 	write(w,response,err)
 }
 
+func (a *App) BalancesHandler(w http.ResponseWriter, r *http.Request) {
+	account := a.auth(r)
+	response, err := account.GetBalances()
+	write(w,response,err)
+}
+
+func (a *App) BalanceHandler(w http.ResponseWriter, r *http.Request) {
+	account := a.auth(r)
+	parser := new(GetBalanceParser)
+	parser.Parse(w,r)
+	response, err := account.GetBalance()
+	write(w,response,err)
+}
+
 func (a *App) GetWithdrawalHandler(w http.ResponseWriter, r *http.Request) {
 	account := a.auth(r)
 	response, err := account.GetWithdrawals()
@@ -38,7 +52,7 @@ func (a *App) GetTransferalsHandler(w http.ResponseWriter, r *http.Request) {
 
 func (a *App) TransferHandler(w http.ResponseWriter, r *http.Request) {
 	account := a.auth(r)
-	parser := new(GetWithdrawalParser)
+	parser := new(TransferParser)
 	parser.Parse(w,r)
 	response, err := account.Transfer(parser)
 	write(w,response,err)

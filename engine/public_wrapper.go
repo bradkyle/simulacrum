@@ -21,16 +21,26 @@ func (e *Engine) GetOrderbooks() (){
 
 }
 
-func (e *Engine) GetTrades() (){
+// Trades
+func (e *Engine) GetTradeHistory(parser app.GetTradeHistoryParser) (){
+
+}
+
+func (e *Engine) GetTradeHistories(parser app.GetTradeHistoryParser) (){
 
 }
 
 
-// Stats & Tickers
+// Stats
+func (e *Engine) GetStat(parser app.GetStatParser) (){
+
+}
+
 func (e *Engine) GetStats() (){
 
 }
 
+// Tickers
 func (e *Engine) GetTicker(parser app.GetTickerParser) (){
 
 }

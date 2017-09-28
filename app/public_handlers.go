@@ -48,6 +48,14 @@ func (a *App) TradesHandler(w http.ResponseWriter, r *http.Request) {
 	a.spot(r)
 }
 
+func (a *App) StatHandler(w http.ResponseWriter, r *http.Request) {
+	parser := new(GetStatParser)
+	parser.Parse(w,r)
+	response, err:= a.Engine.GetStat(parser)
+	write(w,response,err)
+	a.spot(r)
+}
+
 func (a *App) StatsHandler(w http.ResponseWriter, r *http.Request) {
 	response, err:= a.Engine.GetStats()
 	write(w,response,err)

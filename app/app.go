@@ -19,15 +19,14 @@ type App struct{
 	
 	shutdown 			chan bool
 	Accounts			map[string]*account.Account
-	Orderbooks			map[string]*engine.Orderbook
-	Tickers				map[string]*engine.Ticker
 	Engine				engine.Engine
 }
 
 func (app *App)Init() {
+
+	app.SetValidators()
+
 	app.Accounts = make(map[string]*account.Account)
-	app.Orderbooks = make(map[string]*engine.Orderbook)
-	app.Tickers = make(map[string]*engine.Ticker)
 	
 	flag.StringVar(&app.ConfigFile, "config", config.GetFilePath(""), "config file to load")
 	flag.Parse()
@@ -52,7 +51,7 @@ func (app *App)Init() {
 	app.Router.HandleFunc("/{exchange}/transfer", app.TransferHandler).Methods("POST")
 	app.Router.HandleFunc("/{exchange}/orderbook", app.OrderbookHandler).Methods("GET")
 	app.Router.HandleFunc("/{exchange}/ticker", app.TickerHandler).Methods("GET")
-	app.Router.HandleFunc("/{exchange}/trades", app.TradeHistoryHandler).Methods("GET")
+	app.Router.HandleFunc("/{exchange}/trades", app.TradesHandler).Methods("GET")
 	app.Router.HandleFunc("/{exchange}/assets", app.AssetsHandler).Methods("GET")
 	app.Router.HandleFunc("/{exchange}/pairs", app.AssetsHandler).Methods("GET")
 	app.Router.HandleFunc("/bank/account", app.BankHandler).Methods("POST")
