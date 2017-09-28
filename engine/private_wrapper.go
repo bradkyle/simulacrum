@@ -6,33 +6,36 @@ import (
 )
 
 // Orders
-func (e *Engine) NewOrder(account acc.Account, parser app.NewOrderParser) (){
-	locker := o.getLocker(payload.Ticker)
+func (e *OrderEngine) NewOrder(account acc.Account, parser app.NewOrderParser) (){
+	locker := e.getLocker(parser.Symbol)
 	err := locker.Lock()
 	if err != nil {
 		return err
 	}
 	defer locker.Unlock()
 
-	o.orderStore.set(order.lookup(), order)
-	o.orderQueue.Enqueue(order.Intent+order.Ticker, &heap.Node{
+	// todo convert parser into order
+	order := Order{}
+
+	e.store.set(order.index(), order)
+	e.queue.Enqueue(order.Side()+order.Symbol, &Node{
 		Value:  order.price(),
-		Lookup: order.lookup(),
+		Lookup: order.index(),
 	})
 
-	o.run(payload.Ticker)
+	e.run(parser.Symbol)
 	return nil
 }
 
-func (e *Engine) CancelOrder(account acc.Account, parser app.CancelOrderParser) (){
+func (e *OrderEngine) CancelOrder(account acc.Account, parser app.CancelOrderParser) (){
 
 }
 
-func (e *Engine) GetOrder(account acc.Account, parser app.GetOrderParser) (){
+func (e *OrderEngine) GetOrder(account acc.Account, parser app.GetOrderParser) (){
 
 }
 
-func (e *Engine) GetOrders(account acc.Account) (){
+func (e *OrderEngine) GetOrders(account acc.Account) (){
 
 }
 

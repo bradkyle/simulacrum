@@ -1,5 +1,11 @@
 package engine
 
+import (
+	"github.com/thorad/simulacrum/asset"
+	"time"
+	"github.com/thorad/simulacrum/account"
+)
+
 type OrderKind int
 const(
 	Limit	OrderKind = iota
@@ -33,13 +39,14 @@ const(
 
 type Order struct{
 	Index				string
+	Symbol				string
 
 	Amount				float64
 	Rate				float64
 
-	Pair				Pair
-	Base				Asset
-	Quote				Asset
+	Pair				asset.Pair
+	Base				asset.Asset
+	Quote				asset.Asset
 
 	Kind				OrderKind
 	Side				OrderSide
@@ -85,5 +92,80 @@ type Order struct{
 	ClosestStopLoss      		float64
 	Delay                   	time.Duration
 
-	Account				Account
+	Account				account.Account
+}
+
+func (o *Order) Side() string{
+	if o.Side == Buy{
+		return "Buy";
+	} else if o.Side == Sell{
+		return "Sell"
+	}
+
+}
+
+type AnonymizedOrder struct {
+	Bid         float64 `json:"bid"`
+	Ask         float64 `json:"ask"`
+	Shares      int     `json:"shares"`
+	Ticker      string  `json:"ticker"`
+	Timecreated int64   `json:"timecreated"` // unix time
+}
+
+//func AnonymizeOrder(order *Order) AnonymizedOrder {
+//	return AnonymizedOrder{
+//		Bid:         order.Bid,
+//		Ask:         order.Ask,
+//		Shares:      order.Shares,
+//		Ticker:      order.Ticker,
+//		Timecreated: order.Timecreated,
+//	}
+//}
+
+func (o *Order) index() string {
+	o.Index = o.TimeCreated.String() + o.Account.Name
+	return o.Index
+}
+
+func (o *Order) partialFill(price float64, remainder float64) *Trade {
+	o.Amount = remainder
+	return &Trade{
+		Account                 :o.Account,
+		Amount                  :o.Amount-remainder,
+		Price                   :price,
+		Base                    :o.Base,
+		Quote                   :o.Quote,
+		TimeCreated             :time.Now().Unix(),
+	}
+}
+
+func (o *Order) fill(price float64) *Trade {
+	return &Trade{
+		Account                 :o.Account,
+		Amount                  :o.Amount,
+		Price                   :price,
+		Base                    :o.Base,
+		Quote                   :o.Quote,
+		TimeCreated             :time.Now().Unix(),
+	}
+}
+
+func (o *Order) price() float64 {
+	K := o.Kind
+	I := o.Side
+
+	if I == Buy && K == Limit {
+		return o.Bid
+
+	} else if I == Sell && K == Limit {
+		return o.Ask
+
+	} else if I == Buy && K == Market {
+		return 1000000.00
+
+	} else if I == Sell && K == Market {
+		return 0.00
+	}
+	// should never get here
+	return 1000000.00
 }
