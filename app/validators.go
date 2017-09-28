@@ -2,38 +2,116 @@ package app
 
 import (
 	"github.com/asaskevich/govalidator"
-	"log"
 )
 
-func (a *App)SetValidators() {
-	govalidator.CustomTypeTagMap.Set("customByteArrayValidator", CustomTypeValidator(func(i interface{}, context interface{}) bool {
-		switch v := context.(type) { // you can type switch on the context interface being validated
-		case StructWithCustomByteArray:
-		// you can check and validate against some other field in the context,
-		// return early or not validate against the context at all – your choice
-		case SomeOtherType:
-		// ...
-		default:
-		// expecting some other type? Throw/panic here or continue
-		}
+func (a *App)setValidators() {
 
-		switch v := i.(type) { // type switch on the struct field being validated
-		case CustomByteArray:
-			for _, e := range v {
-				// this validator checks that the byte array is not empty, i.e. not all zeroes
-				if e != 0 {
-					return true
-				}
-			}
-		}
+	govalidator.CustomTypeTagMap.Set("validSymbol", govalidator.CustomTypeValidator(func(i interface{}, context interface{}) bool {
+
+		return false
+	}))
+
+	govalidator.CustomTypeTagMap.Set("validOrderSymbol", govalidator.CustomTypeValidator(func(i interface{}, context interface{}) bool {
+
+
+		return false
+	}))
+
+	govalidator.CustomTypeTagMap.Set("validOrderAmount", govalidator.CustomTypeValidator(func(i interface{}, context interface{}) bool {
+
+		return false
+	}))
+
+	govalidator.CustomTypeTagMap.Set("validOrderType", govalidator.CustomTypeValidator(func(i interface{}, context interface{}) bool {
+
+		return false
+	}))
+
+	govalidator.CustomTypeTagMap.Set("validOCOBuy", govalidator.CustomTypeValidator(func(i interface{}, context interface{}) bool {
+
+		return false
+	}))
+
+	govalidator.CustomTypeTagMap.Set("validOCOSell", govalidator.CustomTypeValidator(func(i interface{}, context interface{}) bool {
+
+		return false
+	}))
+
+	govalidator.CustomTypeTagMap.Set("validOrderId", govalidator.CustomTypeValidator(func(i interface{}, context interface{}) bool {
+
+		return false
+	}))
+
+	govalidator.CustomTypeTagMap.Set("validOrderIds", govalidator.CustomTypeValidator(func(i interface{}, context interface{}) bool {
+
+		return false
+	}))
+
+	govalidator.CustomTypeTagMap.Set("validOfferCurrency", govalidator.CustomTypeValidator(func(i interface{}, context interface{}) bool {
+
+		return false
+	}))
+
+	govalidator.CustomTypeTagMap.Set("validOfferAmount", govalidator.CustomTypeValidator(func(i interface{}, context interface{}) bool {
+
+		return false
+	}))
+
+	govalidator.CustomTypeTagMap.Set("validOfferRate", govalidator.CustomTypeValidator(func(i interface{}, context interface{}) bool {
+
+		return false
+	}))
+
+	govalidator.CustomTypeTagMap.Set("validOfferPeriod", govalidator.CustomTypeValidator(func(i interface{}, context interface{}) bool {
+
+		return false
+	}))
+
+	govalidator.CustomTypeTagMap.Set("validOfferId", govalidator.CustomTypeValidator(func(i interface{}, context interface{}) bool {
+
+		return false
+	}))
+
+	govalidator.CustomTypeTagMap.Set("validOrderbookSymbol", govalidator.CustomTypeValidator(func(i interface{}, context interface{}) bool {
+
+		return false
+	}))
+
+	govalidator.CustomTypeTagMap.Set("validTickerSymbol", govalidator.CustomTypeValidator(func(i interface{}, context interface{}) bool {
+
+		return false
+	}))
+
+	govalidator.CustomTypeTagMap.Set("validStatsSymbol", govalidator.CustomTypeValidator(func(i interface{}, context interface{}) bool {
+
+		return false
+	}))
+
+	govalidator.CustomTypeTagMap.Set("validTradesSymbol", govalidator.CustomTypeValidator(func(i interface{}, context interface{}) bool {
+
+		return false
+	}))
+
+	govalidator.CustomTypeTagMap.Set("validAssetSymbol", govalidator.CustomTypeValidator(func(i interface{}, context interface{}) bool {
+
+		return false
+	}))
+
+	govalidator.CustomTypeTagMap.Set("validPairSymbol", govalidator.CustomTypeValidator(func(i interface{}, context interface{}) bool {
+
+		return false
+	}))
+
+	govalidator.CustomTypeTagMap.Set("validDetailedPairSymbol", govalidator.CustomTypeValidator(func(i interface{}, context interface{}) bool {
+
 		return false
 	}))
 }
 
-func (p *ParseCore) Validate() ParseCore{
+func (p *ParseCore) Validate() (ParseCore, error){
       result, err := govalidator.ValidateStruct(p)
       if err != nil {
-	log.Println(err)
+	return &ParseCore{}, err
       }
-      return result
+      return result, nil
 }

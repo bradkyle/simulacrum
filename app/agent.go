@@ -16,11 +16,14 @@ func (a App) NewAccount(parser NewAccountParser) (*account.Account, error){
 
 func (a *App) auth(r *http.Request) *account.Account{
 
-	a.spot(r)
 	return
 }
 
 func (a *App) spot(r *http.Request){
+
+}
+
+func (a *App) rule(w http.ResponseWriter,r *http.Request){
 
 }
 

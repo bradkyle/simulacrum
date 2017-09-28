@@ -2,10 +2,7 @@ package app
 
 import (
 	"github.com/gorilla/mux"
-	"github.com/thorad/simulacrum/config"
-	"github.com/thorad/simulacrum/common"
 	"github.com/thorad/simulacrum/engine"
-	"flag"
 	"log"
 	"github.com/thorad/simulacrum/account"
 	"net/http"
@@ -13,10 +10,8 @@ import (
 
 type App struct{
 	Router				*mux.Router	
-	Config				*config.Config
+	Config				*Config
 	ConfigFile			string
-	Logger				*common.Logger
-	
 	shutdown 			chan bool
 	Accounts			map[string]*account.Account
 	Engine				engine.Engine
@@ -24,22 +19,13 @@ type App struct{
 
 func (app *App)Init() {
 
-	app.SetValidators()
+	app.loadConfig()
+	app.setResponders()
+	app.setValidators()
 
 	app.Accounts = make(map[string]*account.Account)
-	
-	flag.StringVar(&app.ConfigFile, "config", config.GetFilePath(""), "config file to load")
-	flag.Parse()
 
-	app.Config = new(config.Config)
-	log.Printf("Loading config file %s..\n", app.ConfigFile)
 
-	err := app.Config.LoadConfig(app.ConfigFile)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	app.Load
 	app.Router = mux.NewRouter().StrictSlash(true)
 	app.Router.HandleFunc("/account/new", app.NewAccountHandler).Methods("POST")
 	app.Router.HandleFunc("/{exchange}/order/new", app.CreateOrderHandler).Methods("POST")

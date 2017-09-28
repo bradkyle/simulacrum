@@ -1,6 +1,6 @@
-package config
+package app
 
-type Config struct{
+type OldConfig struct{
 	Name 				string
 	Verbose				bool
 	EntropyRate			bool

@@ -11,18 +11,6 @@ import (
 	"encoding/json"
 )
 
-func write(w http.ResponseWriter, response interface{}, err error){
-	if err != nil {
-		log.Println(err)
-		w.WriteHeader(http.StatusRequestTimeout)
-		w.Write([]byte("Status 408"))
-		return
-	}
-
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(response)
-}
 
 // AdjustGoMaxProcs adjusts the maximum processes that the CPU can handle.
 func (a *App) AdjustGoMaxProcs() {
