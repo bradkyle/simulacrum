@@ -8,28 +8,67 @@ import (
 // Continuous Trading	----------------------------------------------------------------------------------------------->
 
 /*
-FifoTwoTradeEngine: Price/Time Algorithm
+FifoEngine: Price/Time Algorithm
 The FIFO algorithm uses price and time as the only criteria for filling an order. In this algorithm,
 all orders at the same price level are filled according to time priority; the first order at a price
 level is the first order matched.
-It is important to note that an order loses order priority and is re-queued when changed in any of the following ways:
- - Increase the quantity
- - Change the price
- - Change the account number
-In FifoTwoTradeEngine the subsequent trades are split into two seperate trades.
+
+Using the FIFO match algorithm:
+Orders at the same price are prioritized by their entry times, with the oldest order having the highest priority.
+The aggregated implied order has the lowest priority within its price level.
+In the example, if any orders on the offer side were to come in at the corresponding price of 9330,
+then the 3-lot and 5-lot would match first (in that order), with the 2-lot implied order filled last
+because it has the lowest priority.
 */
-type FifoTwoTradeEngine struct{
+type FifoEngine struct{
 	OrderEngine
 }
 
-func (e *FifoTwoTradeEngine) run(symbol string) {
+func (e *FifoEngine) run(symbol string) {
+		buyTop := e.queue.Peek("BUY" + symbol)
+		sellTop := e.queue.Peek("SELL" + symbol)
 
+		for buyTop != nil && sellTop != nil && buyTop.Value >= sellTop.Value {
+			buy := e.store.get(buyTop.Lookup)
+			sell := e.store.get(sellTop.Lookup)
+			price := e.negotiate(buy, sell)
+
+			if buy.Amount == sell.Amount {
+				e.queue.Dequeue("BUY" + symbol)
+				e.queue.Dequeue("SELL" + symbol)
+
+				go e.trade(buy.fill(price), sell.fill(price))
+
+				e.store.remove(buyTop.Lookup)
+				e.store.remove(sellTop.Lookup)
+
+			} else if buy.Amount < sell.Amount {
+				e.queue.Dequeue("BUY" + symbol)
+				remainderSell := sell.Amount - buy.Amount
+
+				go e.trade(buy.fill(price), sell.partialFill(price, remainderSell))
+
+				e.store.remove(buyTop.Lookup)
+
+			} else if buy.Amount > sell.Amount {
+				e.queue.Dequeue("SELL" + symbol)
+				remainderBuy := buy.Amount - sell.Amount
+
+				go e.trade(sell.fill(price), sell.partialFill(price, remainderBuy))
+
+				e.store.remove(sellTop.Lookup)
+			}
+
+			buyTop = e.queue.Peek("BUY" + symbol)
+			sellTop = e.queue.Peek("SELL" + symbol)
+		}
+		e.Publish(symbol, buyTop, sellTop)
 }
 
 
 
 /*
-FifoTwoTradeLMMEngine: Price/Time Algorithm
+FifoLMMEngine: Price/Time Algorithm
 The FIFO with LMM algorithm is an enhanced FIFO algorithm that allows for LMM allocations prior to the
 FIFO allocations. LMMs are each allocated a configurable percentage of an aggressor order before the
 remaining quantity is allocated FIFO.
@@ -38,18 +77,18 @@ The FIFO with LMM algorithm follows these stages to match trades:
 	- FIFO allocation
 */
 
-type FifoTwoTradeLMMEngine struct{
+type FifoLMMEngine struct{
 	OrderEngine
 }
 
-func (e *FifoTwoTradeLMMEngine) run(symbol string) {
+func (e *FifoLMMEngine) run(symbol string) {
 
 }
 
 
 
 /*
-FifoTwoTradeTopLMMEngine: Price/Time Algorithm
+FifoTopLMMEngine: Price/Time Algorithm
 The FIFO with LMM algorithm is an enhanced FIFO algorithm that allows for LMM allocations prior
 to the FIFO allocations. Additionally, this algorithm incorporates a priority (top order) to the
 first incoming order that betters the market. If priority is established, the aggressor orders are
@@ -60,74 +99,11 @@ The FIFO with LMM algorithm follows these stages to match trades:
 	- FIFO allocation
 */
 
-type FifoTwoTradeTopLMMEngine struct{
+type FifoTopLMMEngine struct{
 	OrderEngine
 }
 
-func (e *FifoTwoTradeTopLMMEngine) run(symbol string) {
-
-}
-
-
-
-/*
-FifoOneTradeEngine: Price/Time Algorithm
-The FIFO algorithm uses price and time as the only criteria for filling an order. In this algorithm,
-all orders at the same price level are filled according to time priority; the first order at a price
-level is the first order matched.
-It is important to note that an order loses order priority and is re-queued when changed in any of the following ways:
-	- Increase the quantity
-	- Change the price
-	- Change the account number
-In FifoOneTradeEngine only one trade is made accounting for both the buy and sell order.
-*/
-
-type FifoOneTradeEngine struct{
-	OrderEngine
-}
-
-func (e *FifoOneTradeEngine) run(symbol string) {
-	
-}
-
-
-/*
-FifoOneTradeLMMEngine: Price/Time Algorithm
-The FIFO with LMM algorithm is an enhanced FIFO algorithm that allows for LMM allocations prior to the
-FIFO allocations. LMMs are each allocated a configurable percentage of an aggressor order before the
-remaining quantity is allocated FIFO.
-The FIFO with LMM algorithm follows these stages to match trades:
-	- LMM set to configurable percent
-	- FIFO allocation
-*/
-
-type FifoOneTradeLMMEngine struct{
-	OrderEngine
-}
-
-func (e *FifoOneTradeLMMEngine) run(symbol string) {
-
-}
-
-
-
-/*
-FifoOneTradeTopLMMEngine: Price/Time Algorithm
-The FIFO with LMM algorithm is an enhanced FIFO algorithm that allows for LMM allocations prior
-to the FIFO allocations. Additionally, this algorithm incorporates a priority (top order) to the
-first incoming order that betters the market. If priority is established, the aggressor orders are
-first allocated to the top order until the order's quantity is exhausted.
-The FIFO with LMM algorithm follows these stages to match trades:
-	- Assigns a top order percent allocation that betters the market
-	- LMM set to configurable percent
-	- FIFO allocation
-*/
-
-type FifoOneTradeTopLMMEngine struct{
-	OrderEngine
-}
-
-func (e *FifoOneTradeTopLMMEngine) run(symbol string) {
+func (e *FifoTopLMMEngine) run(symbol string) {
 
 }
 
@@ -268,20 +244,3 @@ func (e *AllocationEngine) run(symbol string) {
 
 
 
-// Auction Trading ---------------------------------------------------------------------------------------------------->
-
-
-
-
-
-
-
-// Broker Based ------------------------------------------------------------------------------------------------------->
-
-
-
-
-
-
-
-// Peer to Peer ------------------------------------------------------------------------------------------------------->

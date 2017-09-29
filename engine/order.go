@@ -6,6 +6,10 @@ import (
 	"github.com/thorad/simulacrum/account"
 )
 
+const(
+
+)
+
 type OrderKind int
 const(
 	Limit	OrderKind = iota
@@ -52,6 +56,8 @@ type Order struct{
 	Side				OrderSide
 	Execution			OrderExecution
 
+	Hidden				bool
+	PostOnly			bool
 	Active				bool
 	Closed				bool
 	Filled				bool
@@ -134,4 +140,29 @@ func (o *Order) price() float64 {
 	}
 	// should never get here
 	return 1000000.00
+}
+
+func (o *Order) partialFill(price float64, newShares int) Trade {
+	o.Shares = newShares
+	return Trade{
+		Actor:  o.Actor,
+		Shares: o.Shares - newShares,
+		Price:  price,
+		Intent: o.Intent,
+		Kind:   o.Kind,
+		Ticker: o.Ticker,
+		Time:   time.Now().Unix(),
+	}
+}
+
+func (o *Order) fill(price float64) Trade {
+	return Trade{
+		Actor:  o.Actor,
+		Shares: o.Shares,
+		Price:  price,
+		Intent: o.Intent,
+		Ticker: o.Ticker,
+		Kind:   o.Kind,
+		Time:   time.Now().Unix(),
+	}
 }

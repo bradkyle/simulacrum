@@ -6,6 +6,7 @@ import (
 	"sync"
 	"github.com/garyburd/redigo/redis"
 	"github.com/thorad/simulacrum/account"
+	"fmt"
 )
 
 type EngineCore interface{
@@ -34,15 +35,16 @@ type OrderEngineCore interface{
 
 }
 
-func (e *OrderEngine) Publish(bid *Order, ask *Order){
+func (e *OrderEngine) Publish(symbol string, bid *Order, ask *Order){
 
 }
 
 func (e *OrderEngine) Switch(){
 
+
 }
 
-func (e *OrderEngine) negotiate(buy *Order, sell *Order){
+func (e *OrderEngine) negotiate(buy *Order, sell *Order) float64{
 	bKind := buy.Kind
 	sKind := sell.Kind
 
@@ -60,15 +62,8 @@ func (e *OrderEngine) negotiate(buy *Order, sell *Order){
 	return e.LastPrice
 }
 
-func (e *OrderEngine) oneFill(buy *Order, sell *Order, price float64) *Trade{
-	return &Trade{}
-}
 
-func (e *OrderEngine) twoFill(buy *Order, sell *Order, price float64) [2]*Trade{
-	return &Trade{}, &Trade{}
-}
-
-func (e *OrderEngine) process(){
+func (e *OrderEngine) trade(buy *Trade, sell *Trade){
 
 }
 

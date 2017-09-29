@@ -15,6 +15,8 @@ type Asset struct{
 	Symbol				string
 	AssetType			AssetType
 	Enabled				bool
+	MaxOrderSize			float64
+	MinOrderSize			float64
 }
 
 
