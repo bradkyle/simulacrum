@@ -3,7 +3,7 @@ package app
 import (
 	"net/http"
 	"github.com/thorad/simulacrum/goresponder"
-	"github.com/thorad/simulacrum/engine"
+	"github.com/thorad/simulacrum/parse"
 )
 
 
@@ -14,12 +14,12 @@ func (a *App) setResponders(){
 
 	//todo goresponder.CustomFormatter.Set([]interface, formatter wrapper)
 
-	goresponder.CustomTypeTagMap.Set(NewOrderParser{}, goresponder.CustomTypeResponder(func(i interface{}, context interface{}) bool {
+	goresponder.CustomTypeTagMap.Set(parse.NewOrderParser{}, goresponder.CustomTypeResponder(func(i interface{}, context interface{}) bool {
 
 		return false
 	}))
 
-	goresponder.CustomTypeTagMap.Set([]engine.Order{}, goresponder.CustomTypeResponder(func(i interface{}, context interface{}) bool {
+	goresponder.CustomTypeTagMap.Set(parse.NewAccountParser{}, goresponder.CustomTypeResponder(func(i interface{}, context interface{}) bool {
 
 		return false
 	}))

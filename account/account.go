@@ -3,6 +3,8 @@ package account
 import (
 	"time"
 	"github.com/thorad/simulacrum/asset"
+	"github.com/thorad/simulacrum/engine"
+	"errors"
 )
 
 type AccountStatus int
@@ -66,24 +68,20 @@ type Balance struct{
 }
 
 
-func (a *Account) buy(t Trade) {
-	if a.assets[t.Ticker] == nil {
-		a.assets[t.Ticker] = &Asset{}
+func (a *Account) buy(t engine.Trade) error{
+
+	if a.Balances[t.Base] >= (t.Amount * t.Price) {
+		a.Balances[t.Base] = a.Balances[t.Base] - (t.Amount * t.Price)
+		a.Balances[t.Target] = a.Balances[t.Target] + t.Amount
 	}
-	a.cash = a.cash - (float64(t.Shares) * t.Price)
-	asset := a.assets[t.Ticker]
-	asset.ticker = t.Ticker
-	asset.shares = asset.shares + t.Shares
+	return errors.New("")
 }
 
-func (a *Account) sell(t Trade) {
-	if a.assets[t.Ticker] == nil {
-		a.assets[t.Ticker] = &Asset{}
+func (a *Account) sell(t engine.Trade) {
+	if a.Balances[t.Base] >= (t.Amount * t.Price) {
+		a.Balances[t.Base] = a.Balances[t.Base] + (t.Amount * t.Price)
+		a.Balances[t.Target] = a.Balances[t.Target] + t.Amount
 	}
-	a.cash = a.cash + (float64(t.Shares) * t.Price)
-	asset := a.assets[t.Ticker]
-	asset.ticker = t.Ticker
-	asset.shares = asset.shares - t.Shares
 }
 
 func ProcessTrade(t Trade, o Trade) {

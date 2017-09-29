@@ -1,57 +1,57 @@
 package engine
 
 import (
-	"github.com/thorad/simulacrum/app"
+	"github.com/thorad/simulacrum/parse"
 	acc "github.com/thorad/simulacrum/account"
 )
 
 // Orders
-func (e *OrderEngine) NewOrder(account acc.Account, parser app.NewOrderParser) app.NewOrderParser{
+func (e *OrderEngine) NewOrder(account acc.Account, parser parse.NewOrderParser) parse.NewOrderParser{
 
 }
 
 // return Result of /order/status for the cancelled order.
-func (e *OrderEngine) CancelOrder(account acc.Account, parser app.CancelOrderParser) app.CancelOrderParser{
+func (e *OrderEngine) CancelOrder(account acc.Account, parser parse.CancelOrderParser) parse.CancelOrderParser{
 
 }
 
 // return {"result":"Orders cancelled"}
-func (e *OrderEngine) CancelMultipleOrders(account acc.Account, parser app.CancelOrderParser) app.CancelOrderParser{
+func (e *OrderEngine) CancelMultipleOrders(account acc.Account, parser parse.CancelOrderParser) parse.CancelOrderParser{
 
 }
 
 // return {"result":"All orders cancelled"}
-func (e *OrderEngine) CancelAllOrders(account acc.Account) app.CancelAllOrdersParser{
+func (e *OrderEngine) CancelAllOrders(account acc.Account) parse.CancelAllOrdersParser{
 
 }
 
-func (e *OrderEngine) GetOrder(account acc.Account, parser app.GetOrderParser) app.GetOrderParser{
+func (e *OrderEngine) GetOrder(account acc.Account, parser parse.GetOrderParser) parse.GetOrderParser{
 
 }
 
-func (e *OrderEngine) GetOrders(account acc.Account) app.GetOrdersParser{
+func (e *OrderEngine) GetOrders(account acc.Account) parse.GetOrdersParser{
 
 }
 
 
 //Offers
-func (e *Engine) NewOffer(account acc.Account, parser app.NewOfferParser) app.NewOfferParser{
+func (e *Engine) NewOffer(account acc.Account, parser parse.NewOfferParser) parse.NewOfferParser{
 
 }
 
-func (e *Engine) CancelOffer(account acc.Account, parser app.CancelOfferParser) app.CancelOfferParser{
+func (e *Engine) CancelOffer(account acc.Account, parser parse.CancelOfferParser) parse.CancelOfferParser{
 
 }
 
-func (e *Engine) GetOffer(account acc.Account, parser app.GetOfferParser) app.GetOfferParser{
+func (e *Engine) GetOffer(account acc.Account, parser parse.GetOfferParser) parse.GetOfferParser{
 
 }
 
-func (e *Engine) GetOffers(account acc.Account) app.GetOffersParser{
+func (e *Engine) GetOffers(account acc.Account) parse.GetOffersParser{
 
 }
 
-func (e *Engine) CancelAllOffers(account acc.Account) app.CancelAllOffersParser{
+func (e *Engine) CancelAllOffers(account acc.Account) parse.CancelAllOffersParser{
 
 }
 

@@ -10,8 +10,9 @@ type Trade struct{
 	Account                 *account.Account                           //
 	Amount                  float64                                    //
 	Price                   float64	                                   //
+	Side			OrderSide
 	Base                    asset.Asset                                //
-	Quote                   asset.Asset                                //
+	Target                  asset.Asset                                //
 	OrderExecution          OrderExecution                             //
 	Complete                bool                                       //
 	TimeCreated             time.Time                                  //
@@ -24,6 +25,10 @@ type AnonymizedTrade struct {
 	Price  float64 `json:"price"`
 	Kind   string  `json:"kind"`
 	Time   int64   `json:"time"`
+}
+
+func fill(){
+
 }
 
 //func AnonymizeTrade(trade Trade) AnonymizedTrade {

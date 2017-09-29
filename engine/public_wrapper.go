@@ -1,76 +1,76 @@
 package engine
 
-import "github.com/thorad/simulacrum/app"
+import "github.com/thorad/simulacrum/parse"
 
 // Fundingbook
-func (e *OrderEngine) GetFundingbook() app.GetFundingbookParser{
+func (e *OrderEngine) GetFundingbook() parse.GetFundingbookParser{
 
 }
 
-func (e *OrderEngine) GetLends() app.GetLendsParser{
+func (e *OrderEngine) GetLends() parse.GetLendsParser{
 
 }
 
 
 // Orderbook
-func (e *OrderEngine) GetOrderbook(parser app.GetOrderbookParser) app.GetOrderbookParser{
+func (e *OrderEngine) GetOrderbook(parser parse.GetOrderbookParser) parse.GetOrderbookParser{
 
 }
 
-func (e *OrderEngine) GetOrderbooks()  app.GetOrderbooksParser{
+func (e *OrderEngine) GetOrderbooks()  parse.GetOrderbooksParser{
 
 }
 
 // Trades
-func (e *OrderEngine) GetTradeHistory(parser app.GetTradeHistoryParser)  app.GetOrderbookParser{
+func (e *OrderEngine) GetTradeHistory(parser parse.GetTradeHistoryParser)  parse.GetOrderbookParser{
 
 }
 
-func (e *OrderEngine) GetTradeHistories() app.GetTradeHistoriesParser{
+func (e *OrderEngine) GetTradeHistories() parse.GetTradeHistoriesParser{
 
 }
 
 
 // Stats
-func (e *OrderEngine) GetStat(parser app.GetStatParser) app.GetStatParser{
+func (e *OrderEngine) GetStat(parser parse.GetStatParser) parse.GetStatParser{
 
 }
 
-func (e *OrderEngine) GetStats() app.GetStatsParser{
+func (e *OrderEngine) GetStats() parse.GetStatsParser{
 
 }
 
 // Tickers
-func (e *OrderEngine) GetTicker(parser app.GetTickerParser) app.GetTickerParser{
+func (e *OrderEngine) GetTicker(parser parse.GetTickerParser) parse.GetTickerParser{
 
 }
 
-func (e *OrderEngine) GetTickers() app.GetTickersParser{
+func (e *OrderEngine) GetTickers() parse.GetTickersParser{
 
 }
 
 
 // Assets & Pairs
-func (e *OrderEngine) GetAssets() app.GetAssetsParser{
+func (e *OrderEngine) GetAssets() parse.GetAssetsParser{
 
 }
 
-func (e *OrderEngine) GetAsset(parser app.GetAssetParser) app.GetAssetParser{
+func (e *OrderEngine) GetAsset(parser parse.GetAssetParser) parse.GetAssetParser{
 
 }
 
-func (e *OrderEngine) GetPairs(parser app.GetPairParser) app.GetPairParser{
+func (e *OrderEngine) GetPairs(parser parse.GetPairParser) parse.GetPairParser{
 
 }
 
-func (e *OrderEngine) GetDetailedPairs() app.GetDetailedPairsParser{
+func (e *OrderEngine) GetDetailedPairs() parse.GetDetailedPairsParser{
 
 }
 
-func (e *OrderEngine) GetPair(parser app.GetPairParser) app.GetPairParser{
+func (e *OrderEngine) GetPair(parser parse.GetPairParser) parse.GetPairParser{
 
 }
 
-func (e *OrderEngine) GetDetailedPair(parser app.GetDetailedPairParser) app.GetDetailedPairParser{
+func (e *OrderEngine) GetDetailedPair(parser parse.GetDetailedPairParser) parse.GetDetailedPairParser{
 
 }

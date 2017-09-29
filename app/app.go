@@ -22,13 +22,15 @@ type App struct{
 	shutdown 			chan bool
 	Accounts			map[string]*account.Account
 	orderEngine			engine.OrderEngine
+	offerEngine			engine.FundingEngine
 	Env				AppEnv
 }
 
 func (app *App)Init() {
 
+
 	app.Accounts = make(map[string]*account.Account)
-	app.loadConfig()
+	app.config()
 
 	app.Router = mux.NewRouter().StrictSlash(true)
 	app.setValidators()
@@ -48,7 +50,21 @@ func (app *App)Init() {
 	app.Router.HandleFunc("/{exchange}/trades", app.TradeHistoriesHandler).Methods("GET")
 	app.Router.HandleFunc("/{exchange}/assets", app.AssetsHandler).Methods("GET")
 	app.Router.HandleFunc("/{exchange}/pairs", app.AssetsHandler).Methods("GET")
-	app.Router.HandleFunc("/bank/account", app.BankHandler).Methods("POST")
+
+	// todo admin
+	app.Router.HandleFunc("/account/new", app.NewAccountHandler).Methods("POST")
+	app.Router.HandleFunc("/{exchange}/order/new", app.CreateOrderHandler).Methods("POST")
+	app.Router.HandleFunc("/{exchange}/order/cancel", app.CancelOrderHandler).Methods("POST")
+	app.Router.HandleFunc("/{exchange}/order", app.OrderHandler).Methods("POST")
+	app.Router.HandleFunc("/{exchange}/orders", app.OrdersHandler).Methods("POST")
+	app.Router.HandleFunc("/{exchange}/accounts", app.AccountsHandler).Methods("POST")
+	app.Router.HandleFunc("/{exchange}/withdraw", app.WithdrawHandler).Methods("POST")
+	app.Router.HandleFunc("/{exchange}/transfer", app.TransferHandler).Methods("POST")
+	app.Router.HandleFunc("/{exchange}/orderbook", app.OrderbookHandler).Methods("GET")
+	app.Router.HandleFunc("/{exchange}/ticker", app.TickerHandler).Methods("GET")
+	app.Router.HandleFunc("/{exchange}/trades", app.TradeHistoriesHandler).Methods("GET")
+	app.Router.HandleFunc("/{exchange}/assets", app.AssetsHandler).Methods("GET")
+	app.Router.HandleFunc("/{exchange}/pairs", app.AssetsHandler).Methods("GET")
 }
 
 func (app *App) Start(){

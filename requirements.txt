@@ -1,0 +1,2 @@
+https://github.com/bradkyle/simulacrum_admin
+https://github.com/bradkyle/goresponder

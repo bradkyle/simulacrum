@@ -7,13 +7,14 @@ import (
 
 type Config struct{
 
+	// Order Engine
 
 
 	// Validator
 
 }
 
-func (a *App) loadConfig(){
+func (a *App) config(){
 	flag.StringVar(&a.ConfigFile, "config", "", "config file to load")
 	flag.Parse()
 

@@ -2,6 +2,7 @@ package app
 
 import (
 	"github.com/asaskevich/govalidator"
+	"github.com/thorad/simulacrum/parse"
 )
 
 func (a *App)setValidators() {
@@ -108,10 +109,10 @@ func (a *App)setValidators() {
 	}))
 }
 
-func (p *ParseCore) Validate() (ParseCore, error){
+func Validate(p *parse.ParseCore) (parse.ParseCore, error){
       result, err := govalidator.ValidateStruct(p)
       if err != nil {
-	return &ParseCore{}, err
+	return &parse.ParseCore{}, err
       }
       return result, nil
 }

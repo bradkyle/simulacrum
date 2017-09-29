@@ -98,10 +98,8 @@ type Order struct{
 func (o *Order) Side() string{
 	if o.Side == Buy{
 		return "Buy";
-	} else if o.Side == Sell{
-		return "Sell"
 	}
-
+	return "Sell"
 }
 
 type AnonymizedOrder struct {
@@ -112,43 +110,11 @@ type AnonymizedOrder struct {
 	Timecreated int64   `json:"timecreated"` // unix time
 }
 
-//func AnonymizeOrder(order *Order) AnonymizedOrder {
-//	return AnonymizedOrder{
-//		Bid:         order.Bid,
-//		Ask:         order.Ask,
-//		Shares:      order.Shares,
-//		Ticker:      order.Ticker,
-//		Timecreated: order.Timecreated,
-//	}
-//}
-
 func (o *Order) index() string {
 	o.Index = o.TimeCreated.String() + o.Account.Name
 	return o.Index
 }
 
-func (o *Order) partialFill(price float64, remainder float64) *Trade {
-	o.Amount = remainder
-	return &Trade{
-		Account                 :o.Account,
-		Amount                  :o.Amount-remainder,
-		Price                   :price,
-		Base                    :o.Base,
-		Quote                   :o.Quote,
-		TimeCreated             :time.Now().Unix(),
-	}
-}
-
-func (o *Order) fill(price float64) *Trade {
-	return &Trade{
-		Account                 :o.Account,
-		Amount                  :o.Amount,
-		Price                   :price,
-		Base                    :o.Base,
-		Quote                   :o.Quote,
-		TimeCreated             :time.Now().Unix(),
-	}
-}
 
 func (o *Order) price() float64 {
 	K := o.Kind
