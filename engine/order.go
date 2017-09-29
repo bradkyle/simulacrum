@@ -121,10 +121,10 @@ func (o *Order) price() float64 {
 	I := o.Side
 
 	if I == Buy && K == Limit {
-		return o.Bid
+		return o.Rate
 
 	} else if I == Sell && K == Limit {
-		return o.Ask
+		return o.Rate
 
 	} else if I == Buy && K == Market {
 		return 1000000.00

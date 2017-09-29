@@ -22,7 +22,6 @@ type App struct{
 	shutdown 			chan bool
 	Accounts			map[string]*account.Account
 	orderEngine			engine.OrderEngine
-	offerEngine			engine.FundingEngine
 	Env				AppEnv
 }
 

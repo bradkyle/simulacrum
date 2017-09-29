@@ -1,7 +1,6 @@
 package account
 
 import (
-	"time"
 	"github.com/thorad/simulacrum/asset"
 	"github.com/thorad/simulacrum/engine"
 	"errors"
@@ -17,7 +16,6 @@ type Account struct{
 	Index				string
 	Name                            string
 	Status				AccountStatus
-	Activity			[]Request
 	HighestEquity  			float64
 	HighestBalance 			float64
 	LowestEquity   			float64
@@ -28,27 +26,6 @@ type Account struct{
 	MarginAvailable			float64
 	DefaultAmount			float64					// Amount defaulted on due to not being able to pay back funding
 	Balances			map[asset.Asset]Balance
-}
-
-type Session struct{
-
-}
-
-type RequestKind int
-const (
-	Post		RequestKind = iota
-	Get
-)
-
-type RequestPurpose int
-const(
-	GetBalances	RequestPurpose = iota
-)
-
-type Request struct{
-	Kind				RequestKind
-	Purpose				RequestPurpose
-	Time				time.Time
 }
 
 type BalanceType int
@@ -69,7 +46,6 @@ type Balance struct{
 
 
 func (a *Account) buy(t engine.Trade) error{
-
 	if a.Balances[t.Base] >= (t.Amount * t.Price) {
 		a.Balances[t.Base] = a.Balances[t.Base] - (t.Amount * t.Price)
 		a.Balances[t.Target] = a.Balances[t.Target] + t.Amount
@@ -78,35 +54,10 @@ func (a *Account) buy(t engine.Trade) error{
 }
 
 func (a *Account) sell(t engine.Trade) {
-	if a.Balances[t.Base] >= (t.Amount * t.Price) {
+	if a.Balances[t.Target] >= (t.Amount * t.Price) {
 		a.Balances[t.Base] = a.Balances[t.Base] + (t.Amount * t.Price)
 		a.Balances[t.Target] = a.Balances[t.Target] + t.Amount
 	}
 }
 
-func ProcessTrade(t Trade, o Trade) {
 
-	dataStore := make(map[string]*Ledger)
-
-	if data[t.Actor] == nil {
-		data[t.Actor] = &Ledger{name: t.Actor, cash: 0, assets: make(map[string]*Asset)}
-	}
-	if data[o.Actor] == nil {
-		data[o.Actor] = &Ledger{name: o.Actor, cash: 0, assets: make(map[string]*Asset)}
-	}
-
-	if t.Intent == "BUY" {
-		data[t.Actor].buy(t)
-
-	} else if t.Intent == "SELL" {
-		data[t.Actor].sell(t)
-	}
-
-	if o.Intent == "BUY" {
-		data[o.Actor].buy(o)
-
-	} else if o.Intent == "SELL" {
-		data[o.Actor].sell(o)
-	}
-
-}

@@ -2,35 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a20cc34-03ea-4134-8d43-90e4a33ceb21" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin/auth.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docker-compose.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/offerengine.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/orderengine.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/parse/parse.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/requirements.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/Zeadme.md" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/engine/lend.go" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/engine/offer.go" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/engine/offerengine.go" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/account/account.go" afterPath="$PROJECT_DIR$/account/account.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/account/wrapper.go" afterPath="$PROJECT_DIR$/account/wrapper.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/cron.go" afterPath="$PROJECT_DIR$/admin/cron.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/cron_test.go" afterPath="$PROJECT_DIR$/admin/cron_test.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/register.go" afterPath="$PROJECT_DIR$/admin/register.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/wrapper.go" afterPath="$PROJECT_DIR$/admin/wrapper.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin_handlers.go" afterPath="$PROJECT_DIR$/app/admin_handlers.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.go" afterPath="$PROJECT_DIR$/app/app.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config.go" afterPath="$PROJECT_DIR$/app/config.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/parse.go" afterPath="$PROJECT_DIR$/app/parse.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/responders.go" afterPath="$PROJECT_DIR$/app/responders.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/validators.go" afterPath="$PROJECT_DIR$/app/validators.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/engine.go" afterPath="$PROJECT_DIR$/engine/engine.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/order.go" afterPath="$PROJECT_DIR$/engine/order.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/orderengine/orderengine.go" afterPath="$PROJECT_DIR$/engine/orderengine/orderengine.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/private_wrapper.go" afterPath="$PROJECT_DIR$/engine/private_wrapper.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/public_wrapper.go" afterPath="$PROJECT_DIR$/engine/public_wrapper.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/trade.go" afterPath="$PROJECT_DIR$/engine/trade.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.go" afterPath="$PROJECT_DIR$/main.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.go" afterPath="$PROJECT_DIR$/setup.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/simulator.go" afterPath="$PROJECT_DIR$/simulator.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/orderengine.go" afterPath="$PROJECT_DIR$/engine/orderengine.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/stats.go" afterPath="$PROJECT_DIR$/engine/stats.go" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -56,14 +39,29 @@
                     </provider>
                   </entry>
                 </file>
-                <file leaf-file-name="config.go" pinned="false" current-in-tab="true">
+                <file leaf-file-name="config.go" pinned="false" current-in-tab="false">
                   <entry file="file://$PROJECT_DIR$/app/config.go">
                     <provider selected="true" editor-type-id="text-editor">
-                      <state relative-caret-position="120">
-                        <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+                      <state relative-caret-position="108">
+                        <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
                         <folding>
                           <element signature="e#13#38#0" expanded="true" />
                         </folding>
+                      </state>
+                    </provider>
+                  </entry>
+                </file>
+                <file leaf-file-name="Zeadme.md" pinned="false" current-in-tab="true">
+                  <entry file="file://$PROJECT_DIR$/engine/Zeadme.md">
+                    <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+                      <state split_layout="FIRST">
+                        <first_editor relative-caret-position="312">
+                          <caret line="26" column="9" lean-forward="false" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+                          <folding />
+                        </first_editor>
+                        <second_editor>
+                          <js_state />
+                        </second_editor>
                       </state>
                     </provider>
                   </entry>
@@ -75,7 +73,7 @@
                 <file leaf-file-name="oldconfig.go" pinned="false" current-in-tab="true">
                   <entry file="file://$PROJECT_DIR$/app/oldconfig.go">
                     <provider selected="true" editor-type-id="text-editor">
-                      <state relative-caret-position="192">
+                      <state relative-caret-position="84">
                         <caret line="16" column="32" lean-forward="false" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
                         <folding />
                       </state>
@@ -94,41 +92,21 @@
     <splitter split-orientation="horizontal" split-proportion="0.4148148">
       <split-first>
         <leaf>
-          <file leaf-file-name="engine.go" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/engine/engine.go">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="672">
-                  <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="orderengine.go" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/engine/orderengine.go">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="124">
-                  <caret line="296" column="19" lean-forward="true" selection-start-line="296" selection-start-column="19" selection-end-line="296" selection-end-column="19" />
+                <state relative-caret-position="748">
+                  <caret line="278" column="120" lean-forward="false" selection-start-line="278" selection-start-column="120" selection-end-line="278" selection-end-column="120" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="order.go" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/engine/order.go">
+          <file leaf-file-name="engine.go" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/engine/engine.go">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1072">
-                  <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ledger.go" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../deeptrade/practice/simexch/stockmarket/ledger_service/ledger.go">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <state relative-caret-position="636">
+                  <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -138,14 +116,24 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="account.go" pinned="false" current-in-tab="true">
+          <file leaf-file-name="account.go" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/account/account.go">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="504">
-                  <caret line="80" column="31" lean-forward="false" selection-start-line="80" selection-start-column="31" selection-end-line="80" selection-end-column="31" />
+                <state relative-caret-position="348">
+                  <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
                   <folding>
-                    <element signature="e#17#122#0" expanded="true" />
+                    <element signature="e#17#114#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="orderbook.go" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../deeptrade/practice/simexch/stockmarket/orderbook_service/orderbook.go">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="948">
+                  <caret line="85" column="10" lean-forward="true" selection-start-line="85" selection-start-column="10" selection-end-line="85" selection-end-column="10" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -224,8 +212,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/responders/switch.go" />
-        <option value="$PROJECT_DIR$/cron/responders/responders.go" />
         <option value="$PROJECT_DIR$/goresponder/goresponder_test.go" />
         <option value="$PROJECT_DIR$/goresponder/base.go" />
         <option value="$PROJECT_DIR$/app/response.go" />
@@ -267,14 +253,16 @@
         <option value="$PROJECT_DIR$/parse/parse.go" />
         <option value="$PROJECT_DIR$/app/responders.go" />
         <option value="$PROJECT_DIR$/engine/trade.go" />
-        <option value="$PROJECT_DIR$/engine/order.go" />
         <option value="$PROJECT_DIR$/engine/offerengine.go" />
-        <option value="$PROJECT_DIR$/app/app.go" />
-        <option value="$PROJECT_DIR$/account/account.go" />
         <option value="$PROJECT_DIR$/engine/orderengine/orderengine.go" />
-        <option value="$PROJECT_DIR$/engine/engine.go" />
-        <option value="$PROJECT_DIR$/engine/orderengine.go" />
+        <option value="$PROJECT_DIR$/account/account.go" />
+        <option value="$PROJECT_DIR$/app/app.go" />
+        <option value="$PROJECT_DIR$/engine/order.go" />
+        <option value="$PROJECT_DIR$/engine/stats.go" />
         <option value="$PROJECT_DIR$/app/config.go" />
+        <option value="$PROJECT_DIR$/engine/engine.go" />
+        <option value="$PROJECT_DIR$/engine/Zeadme.md" />
+        <option value="$PROJECT_DIR$/engine/orderengine.go" />
       </list>
     </option>
   </component>
@@ -311,6 +299,30 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="stockmarket" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="simulacrum" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockmarket" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="orderbook_service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="simulacrum" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="simulacrum" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -326,24 +338,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="simulacrum" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="simulacrum" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="orderengine" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -554,34 +548,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/public/img/avatars/1.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/public/img/avatars/2.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/public/img/avatars/3.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/public/img/avatars/4.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/public/img/avatars/5.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -799,16 +765,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/private_wrapper.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="e#16#108#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine/public_wrapper.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -839,26 +795,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../deeptrade/practice/simexch/stockmarket/ledger_service/ledger.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/goresponder/responder.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-12">
           <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parse/parse.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10">
-          <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -871,37 +811,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/order.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1072">
-          <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine/offerengine.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/app.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="24" column="12" lean-forward="false" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/account/account.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="80" column="31" lean-forward="false" selection-start-line="80" selection-start-column="31" selection-end-line="80" selection-end-column="31" />
-          <folding>
-            <element signature="e#17#122#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -913,36 +827,131 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/engine.go">
+    <entry file="file://$PROJECT_DIR$/app/oldconfig.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+        <state relative-caret-position="84">
+          <caret line="16" column="32" lean-forward="false" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/oldconfig.go">
+    <entry file="file://$PROJECT_DIR$/engine/lend.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="16" column="32" lean-forward="false" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/private_wrapper.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../deeptrade/practice/simexch/stockmarket/ledger_service/ledger.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/parse.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="30" column="17" lean-forward="true" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/app.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="23" column="58" lean-forward="false" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/ticker.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/stats.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="31" lean-forward="true" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="108">
+          <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
           <folding>
             <element signature="e#13#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/account/account.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="e#17#114#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/order.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="50" column="10" lean-forward="true" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../deeptrade/practice/simexch/stockmarket/orderbook_service/orderbook.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="948">
+          <caret line="85" column="10" lean-forward="true" selection-start-line="85" selection-start-column="10" selection-end-line="85" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/engine.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="636">
+          <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/Zeadme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="312">
+            <caret line="26" column="9" lean-forward="false" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+            <folding />
+          </first_editor>
+          <second_editor>
+            <js_state />
+          </second_editor>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/engine/orderengine.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="296" column="19" lean-forward="true" selection-start-line="296" selection-start-column="19" selection-end-line="296" selection-end-column="19" />
+        <state relative-caret-position="748">
+          <caret line="278" column="120" lean-forward="false" selection-start-line="278" selection-start-column="120" selection-end-line="278" selection-end-column="120" />
           <folding />
         </state>
       </provider>

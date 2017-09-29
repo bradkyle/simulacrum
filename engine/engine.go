@@ -19,11 +19,7 @@ type Engine struct{
 
 
 
-type MatchingEngineType int
-const(
-	PriceTimePriority MatchingEngineType = iota
-	ProRata
-)
+
 
 
 type OrderEngine struct{
@@ -38,19 +34,6 @@ type OrderEngineCore interface{
 
 }
 
-func (e *OrderEngine) publishOrderbook(symbol string, buyTop *Node, sellTop *Node) {
-	bid := &Order{Symbol: symbol}
-	ask := &Order{Symbol: symbol}
-
-	if buyTop != nil {
-		bid = e.store.get(buyTop.Lookup)
-	}
-	if sellTop != nil {
-		ask = e.store.get(sellTop.Lookup)
-	}
-	go e.Publish(bid, ask)
-}
-
 func (e *OrderEngine) Publish(bid *Order, ask *Order){
 
 }
@@ -59,36 +42,39 @@ func (e *OrderEngine) Switch(){
 
 }
 
+func (e *OrderEngine) negotiate(buy *Order, sell *Order){
+	bKind := buy.Kind
+	sKind := sell.Kind
 
+	if bKind == Market && sKind == Limit{
+		e.LastPrice = sell.price()
 
+	} else if sKind == Market && bKind == Limit {
+		e.LastPrice = buy.price()
 
+	} else if bKind == Limit && sKind == Limit {
+		e.LastPrice = sell.price()
 
+	} // else if both market, use last price
 
-type FundingEngine struct{
+	return e.LastPrice
+}
+
+func (e *OrderEngine) oneFill(buy *Order, sell *Order, price float64) *Trade{
+	return &Trade{}
+}
+
+func (e *OrderEngine) twoFill(buy *Order, sell *Order, price float64) [2]*Trade{
+	return &Trade{}, &Trade{}
+}
+
+func (e *OrderEngine) process(){
 
 }
 
-type FundingEngineCore interface{
-
-}
-
-func (e *FundingEngine) publishOfferbook() {
-
-}
-
-func (e *FundingEngine) Publish(){
-
-}
-
-func (e *FundingEngine) Switch(){
-
-}
 
 
-
-
-
-func NewEngine(pool *redis.Pool, kind MatchingEngineType) *Engine {
+func NewEngine(pool *redis.Pool) *Engine {
 	return &Engine{
 		lockMap:      	make(map[string]*Locker),
 		redsync:       	redsync.New([]redsync.Pool{pool}),
